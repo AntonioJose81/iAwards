@@ -1,0 +1,29 @@
+.guide-cover {
+    max-width: 300px;
+    margin: 2rem auto 0;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.guide-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.guide-cover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+    .guide-cover {
+        max-width: 250px;
+        margin: 1.5rem auto;
+    }
+}
+

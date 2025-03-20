@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - iAwards</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-about-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/freepik__background__19452.png" alt="iAwards" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#como-funciona">Cómo Funciona</a></li>
+                <li><a href="about-us.html">Quiénes Somos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main class="privacy-content about-page">
+        <h1>Quiénes Somos</h1>
+        
+        <div class="about-container">
+            <div class="about-content">
+                <p>iAwards es una marca de ARTESALASER, nacida de la pasión por el diseño, la innovación y la sostenibilidad. Nuestro objetivo es revolucionar el mundo de los trofeos y reconocimientos con materiales biodegradables y tecnología de personalización asistida por inteligencia artificial.</p>
+                
+                <p>Detrás de iAwards está Antonio, diseñador y emprendedor con más de una década de experiencia en fabricación digital. Con una sólida trayectoria en el diseño e impresión 3D, el corte láser y la consultoría para creadores y empresas, ha desarrollado múltiples proyectos que fusionan creatividad y tecnología. Su misión es ofrecer productos únicos y alineados con un futuro más sostenible, manteniendo siempre un alto estándar de calidad y detalle.</p>
+                
+                <p>En iAwards, no solo creamos trofeos: diseñamos experiencias de reconocimiento memorables, donde cada pieza cuenta una historia. Nuestro enfoque combina la artesanía digital con la última tecnología en personalización, permitiendo que cada cliente pueda plasmar su esencia en cada premio.</p>
+                
+                <p>Si buscas trofeos innovadores, personalizados y ecológicos, iAwards es la respuesta.</p>
+            </div>
+            <div class="about-image">
+                <img src="/3EdhmhvPjOvIOvECYY7rX_de8f8ba99a8643468832d35366c642d2.jpg" alt="Founder of iAwards">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/freepik__background__19452.png" alt="iAwards" class="logo">
+                <p>Innovación sostenible en cada premio</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#como-funciona">Cómo Funciona</a></li>
+                    <li><a href="about-us.html">Quiénes Somos</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="privacy.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <p>artesalaser@gmail.com</p>
+                <p>690 63 97 12</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/" class="social-icon">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 iAwards by Artesalaser. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+.privacy-content {
+    max-width: 800px;
+    margin: 120px auto 50px;
+    padding: 2rem;
+    background-color: var(--dark-grey);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.privacy-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.privacy-content h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: var(--accent-color);
+}
+
+.privacy-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.privacy-content ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.privacy-content li {
+    margin-bottom: 0.5rem;
+}
+
+.privacy-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.privacy-content a:hover {
+    color: var(--secondary-color);
+}
+
+@media screen and (max-width: 768px) {
+    .privacy-content {
+        margin: 100px 1rem 2rem;
+        padding: 1.5rem;
+    }
+
+    .privacy-content h1 {
+        font-size: 2rem;
+    }
+
+    .privacy-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
