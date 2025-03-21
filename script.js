@@ -107,50 +107,45 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Manejo del envío del formulario (simulado)
+  // Manejo del envío del formulario
   const leadForm = document.querySelector('.lead-form');
   if (leadForm) {
-    leadForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Recolectar datos del formulario (si es necesario)
-      const formData = {
-        name: this.querySelector('input[type="text"]').value,
-        email: this.querySelector('input[type="email"]').value,
-        phone: this.querySelector('input[type="tel"]').value,
-        company: this.querySelectorAll('input[type="text"]')[1].value
-      };
-      
-      const submitButton = this.querySelector('button');
-      const originalText = submitButton.textContent;
-      submitButton.disabled = true;
-      submitButton.textContent = 'Enviando...';
-      
-      // Simular envío con timeout (reemplazar por llamada real en producción)
-      setTimeout(() => {
-        this.reset();
-        submitButton.textContent = '¡Descarga enviada!';
-        
-        // Mostrar mensaje de éxito
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.textContent = 'Revisa tu email para descargar la guía gratuita';
-        successMessage.style.color = '#4caf50';
-        successMessage.style.marginTop = '1rem';
-        successMessage.style.fontWeight = 'bold';
-        
-        this.appendChild(successMessage);
-        
-        // Restaurar botón y quitar mensaje tras unos segundos
+    // Si el formulario tiene un atributo action (para Formspree), se deja que el navegador lo envíe
+    if (leadForm.getAttribute('action')) {
+      leadForm.addEventListener('submit', function() {
+        const submitButton = this.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+        // Se permite la acción por defecto, y Formspree se encargará de enviar el correo
+      });
+    } else {
+      // Si no tiene action, se simula el envío (esto es para pruebas, no se usará en producción)
+      leadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
         setTimeout(() => {
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
+          this.reset();
+          submitButton.textContent = '¡Descarga enviada!';
+          const successMessage = document.createElement('div');
+          successMessage.className = 'success-message';
+          successMessage.textContent = 'Revisa tu email para descargar la guía gratuita';
+          successMessage.style.color = '#4caf50';
+          successMessage.style.marginTop = '1rem';
+          successMessage.style.fontWeight = 'bold';
+          this.appendChild(successMessage);
           setTimeout(() => {
-            this.removeChild(successMessage);
-          }, 5000);
-        }, 2000);
-      }, 1500);
-    });
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+            setTimeout(() => {
+              this.removeChild(successMessage);
+            }, 5000);
+          }, 2000);
+        }, 1500);
+      });
+    }
   }
   
   // Efecto de rotación de trofeo al mover el mouse
