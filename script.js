@@ -28,13 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Smooth scroll para enlaces ancla y botones CTA
-  // Se excluyen los botones que se encuentran dentro de formularios para evitar interferir con su submit
-  document.querySelectorAll('a[href^="#"], .cta-button').forEach(anchor => {
+  // Se excluyen los botones dentro de formularios para evitar interferir con su submit
+  document.querySelectorAll('a[href^="#"], .cta-button:not(form .cta-button)').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      // Si el elemento está dentro de un formulario, no aplicar smooth scroll
-      if (this.closest('form')) {
-        return;
-      }
       e.preventDefault();
       
       let targetSelector = this.getAttribute('href');
@@ -42,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!targetSelector && this.classList.contains('cta-button')) {
         // Por defecto, se hace scroll a #contacto
         targetSelector = '#contacto';
-        // Si el texto coincide con alguno de los CTA que deben ir a la sección del formulario
         if (this.textContent.trim() === 'Obtén tu diseño gratuito' || 
             this.textContent.trim() === 'Descargar tu guía para organización de eventos gratuita' ||
             this.textContent.trim() === 'Solicita tu muestra gratuita') {
