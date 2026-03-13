@@ -1,0 +1,210 @@
+.nfcSection {
+  background-color: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.nfcContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .nfcContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.featureItem {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  background-color: rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.featureTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.featureDesc {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.abstractNfcVisual {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nfcRipples {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.ripple1, .ripple2, .ripple3 {
+  position: absolute;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 50%;
+  opacity: 0;
+  animation: nfcWave 3s cubic-bezier(0.21, 0.53, 0.56, 0.8) infinite;
+}
+
+.ripple1 {
+  width: 100px; height: 100px;
+  animation-delay: 0s;
+}
+
+.ripple2 {
+  width: 100px; height: 100px;
+  animation-delay: 1s;
+}
+
+.ripple3 {
+  width: 100px; height: 100px;
+  animation-delay: 2s;
+}
+
+.nfcCore {
+  position: relative;
+  width: 140px;
+  height: 200px;
+  background: rgba(15, 19, 26, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  overflow: hidden;
+}
+
+.nfcCore::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 5s infinite;
+}
+
+.coreGlow {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.5) 0%, transparent 70%);
+  filter: blur(15px);
+  z-index: -1;
+  animation: pulseCore 2s ease-in-out infinite alternate;
+}
+
+.nfcIcon {
+  color: var(--text-main);
+  z-index: 2;
+}
+
+.abstractNfcVisual:hover .nfcCore {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(0, 229, 255, 0.2);
+  border-color: rgba(0, 229, 255, 0.6);
+}
+
+@keyframes nfcWave {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(4); opacity: 0; border-width: 0px; }
+}
+
+@keyframes pulseCore {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  100% { opacity: 0.8; transform: scale(1.2); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}

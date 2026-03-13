@@ -1,0 +1,62 @@
+.stepsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .stepsContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.stepItem {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.iconContainer {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .stepItem:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background-color: var(--border-color);
+    z-index: -1;
+  }
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.stepDesc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 250px;
+}

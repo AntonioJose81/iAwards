@@ -1,0 +1,110 @@
+.contactSection {
+  background-color: var(--bg-secondary);
+}
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  background-color: var(--bg-primary);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 1024px) {
+  .contactContainer {
+    flex-direction: row;
+    padding: 4rem;
+  }
+}
+
+.infoBlock {
+  flex: 1;
+}
+
+.directContact {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.directLabel {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #25D366;
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.whatsappBtn:hover {
+  background-color: #20BA56;
+}
+
+.formBlock {
+  flex: 1.2;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.formGroup input,
+.formGroup select {
+  font-family: inherit;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.submitBtn {
+  margin-top: 1rem;
+  width: 100%;
+}
