@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Smartphone, Menu, X } from 'lucide-react';
+import { Smartphone, Menu, X, Phone } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export function Navbar() {
@@ -38,7 +38,11 @@ export function Navbar() {
           <a href="#contacto" className="btn btn-primary">
             Pedir presupuesto
           </a>
-          <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" className={styles.whatsappLink}>
+          <a href="tel:+34690639712" className={styles.phoneLink} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Phone size={16} />
+            690 639 712
+          </a>
+          <a href="https://wa.me/34690639712" target="_blank" rel="noopener noreferrer" className={styles.whatsappLink}>
             WhatsApp
           </a>
         </div>
@@ -62,7 +66,11 @@ export function Navbar() {
           <a href="#contacto" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
             Pedir presupuesto
           </a>
-          <a href="https://wa.me/34600000000" className={styles.whatsappLink} onClick={() => setIsMobileMenuOpen(false)}>
+          <a href="tel:+34690639712" className={styles.phoneLink} onClick={() => setIsMobileMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Phone size={18} />
+            690 639 712
+          </a>
+          <a href="https://wa.me/34690639712" target="_blank" rel="noopener noreferrer" className={styles.whatsappLink} onClick={() => setIsMobileMenuOpen(false)}>
             WhatsApp
           </a>
         </div>

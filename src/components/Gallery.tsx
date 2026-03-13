@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './Gallery.module.css';
 
 const GALLERY_ITEMS = [
@@ -47,6 +49,44 @@ const GALLERY_ITEMS = [
 ];
 
 export function Gallery() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImageIndex === null) return;
+      
+      if (e.key === 'Escape') setSelectedImageIndex(null);
+      if (e.key === 'ArrowRight') setSelectedImageIndex((selectedImageIndex + 1) % GALLERY_ITEMS.length);
+      if (e.key === 'ArrowLeft') setSelectedImageIndex((selectedImageIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImageIndex]);
+
+  // Prevent scroll when lightbox is open
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [selectedImageIndex]);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % GALLERY_ITEMS.length);
+    }
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length);
+    }
+  };
+
   return (
     <section className="section">
       <div className="container">
@@ -58,10 +98,19 @@ export function Gallery() {
         </header>
 
         <div className={styles.galleryGrid}>
-          {GALLERY_ITEMS.map((item) => (
+          {GALLERY_ITEMS.map((item, index) => (
             <div 
               key={item.id} 
               className={`${styles.galleryItem} ${item.featured ? styles.featured : ''}`}
+              onClick={() => setSelectedImageIndex(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setSelectedImageIndex(index);
+                }
+              }}
+              aria-label={`Ver imagen ampliada de ${item.alt}`}
             >
               <img 
                 src={item.image} 
@@ -77,6 +126,54 @@ export function Gallery() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImageIndex !== null && (
+        <div 
+          className={styles.lightbox} 
+          onClick={() => setSelectedImageIndex(null)}
+        >
+          <button 
+            className={styles.closeBtn} 
+            onClick={() => setSelectedImageIndex(null)}
+            aria-label="Cerrar"
+          >
+            <X size={32} />
+          </button>
+
+          <button 
+            className={`${styles.navBtn} ${styles.prevBtn}`} 
+            onClick={handlePrev}
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={48} />
+          </button>
+
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={GALLERY_ITEMS[selectedImageIndex].image} 
+              alt={GALLERY_ITEMS[selectedImageIndex].alt} 
+              className={styles.lightboxImage}
+            />
+            <div className={styles.lightboxInfo}>
+              <span className={styles.lightboxTag}>{GALLERY_ITEMS[selectedImageIndex].tag}</span>
+              <h3 className={styles.lightboxCaption}>{GALLERY_ITEMS[selectedImageIndex].caption}</h3>
+            </div>
+          </div>
+
+          <button 
+            className={`${styles.navBtn} ${styles.nextBtn}`} 
+            onClick={handleNext}
+            aria-label="Siguiente"
+          >
+            <ChevronRight size={48} />
+          </button>
+
+          <div className={styles.counter}>
+            {selectedImageIndex + 1} / {GALLERY_ITEMS.length}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

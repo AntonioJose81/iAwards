@@ -1,4 +1,4 @@
-import { Send, MessageCircle } from 'lucide-react';
+import { Send, MessageCircle, Phone } from 'lucide-react';
 import styles from './ContactForm.module.css';
 
 export function ContactForm() {
@@ -14,10 +14,16 @@ export function ContactForm() {
 
           <div className={styles.directContact}>
             <p className={styles.directLabel}>¿Prefieres un trato más directo?</p>
-            <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn}>
-              <MessageCircle size={20} />
-              Hablar por WhatsApp
-            </a>
+            <div className={styles.contactButtons}>
+              <a href="tel:+34690639712" className={styles.phoneBtn}>
+                <Phone size={20} />
+                Llamar ahora
+              </a>
+              <a href="https://wa.me/34690639712" target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn}>
+                <MessageCircle size={20} />
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
 
