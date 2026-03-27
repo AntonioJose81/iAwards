@@ -99,6 +99,27 @@
   color: var(--text-muted);
 }
 
+.audioBtn {
+  position: relative;
+  overflow: hidden;
+}
+
+.audioBtn.isPlaying {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background-color: rgba(0, 229, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+}
+
+.audioBtn.isPlaying span {
+  animation: textPulse 2s infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
 .abstractNfcVisual {
   flex: 1;
   position: relative;

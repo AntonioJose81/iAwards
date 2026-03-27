@@ -1,5 +1,6 @@
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Smartphone, Mic, Aperture, ShieldCheck } from 'lucide-react';
+import { Smartphone, Mic, Aperture, ShieldCheck, Play, Pause } from 'lucide-react';
 import styles from './NfcExperience.module.css';
 
 const FEATURES = [
@@ -21,6 +22,24 @@ const FEATURES = [
 ];
 
 export function NfcExperience() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleAudioEnded = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <section className={`section ${styles.nfcSection}`}>
       <div className={`container ${styles.nfcContainer}`}>
@@ -55,6 +74,21 @@ export function NfcExperience() {
               <Smartphone size={18} />
               Ver demo /club
             </Link>
+            
+            <button 
+              onClick={toggleAudio} 
+              className={`btn btn-secondary ${styles.audioBtn} ${isPlaying ? styles.isPlaying : ''}`}
+              title={isPlaying ? 'Pausar demo' : 'Reproducir demo de audio'}
+            >
+              {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+              <span>{isPlaying ? 'Detener Demo' : 'Escuchar Demo'}</span>
+            </button>
+            <audio 
+              ref={audioRef} 
+              src="/audios/demo_audio.mp3" 
+              onEnded={handleAudioEnded}
+              hidden 
+            />
             <span className={styles.hint}>Pruébalo desde tu navegador</span>
           </div>
         </div>
