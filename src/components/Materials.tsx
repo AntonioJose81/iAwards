@@ -1,21 +1,21 @@
-import { Leaf, Recycle, Zap } from 'lucide-react';
+import { Leaf, TreeDeciduous, Cpu } from 'lucide-react';
 import styles from './Materials.module.css';
 
 const MATERIAL_FEATURES = [
   {
     icon: <Leaf size={32} strokeWidth={1.5} />,
     title: 'Biomateriales',
-    description: 'PLA y resinas basadas en origen vegetal, 100% biodegradables.'
+    description: 'Fabricamos con PLA y otros materiales biodegradables de extrusión de filamento para desarrollar trofeos más sostenibles y contemporáneos.'
   },
   {
-    icon: <Recycle size={32} strokeWidth={1.5} />,
-    title: 'Economía circular',
-    description: 'Diseñados para minimizar residuos con fabricación bajo demanda local.'
+    icon: <TreeDeciduous size={32} strokeWidth={1.5} />,
+    title: 'Maderas seleccionadas',
+    description: 'Integramos diferentes maderas, desde soluciones más asequibles hasta acabados premium como la haya vaporizada, adaptándonos al presupuesto de cada proyecto.'
   },
   {
-    icon: <Zap size={32} strokeWidth={1.5} />,
-    title: 'Alta tecnología',
-    description: 'Impresión 3D de precisión y grabado láser para acabados impecables.'
+    icon: <Cpu size={32} strokeWidth={1.5} />,
+    title: 'Tecnología aplicada al diseño',
+    description: 'Utilizamos impresión 3D FDM, corte y grabado láser, fresado de madera e impresión UV para lograr piezas únicas, precisas y visualmente impactantes.'
   }
 ];
 
